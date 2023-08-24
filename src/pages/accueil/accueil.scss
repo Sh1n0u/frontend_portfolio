@@ -1,0 +1,194 @@
+.page-accueil {
+    width: auto;
+    height: 100vh;
+    background-color: #3C3A3A;
+    font-family: 'Ubuntu';
+
+
+    .block1 {
+        width: 100%;
+        height: 325px;
+        overflow: hidden;
+        position: relative;
+        font-size: 25px;
+
+        img {
+            object-fit: cover;
+            filter: blur(3px);
+        }
+
+        .title {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+
+            h1 {
+                margin: 0;
+            }
+
+            .subtitle {
+                opacity: 0; /* Définir l'opacité à 0 pour commencer */
+                color: #A2EF87;
+                padding-left: 510px;
+                transform: translateX(50%); /* Déplacer le texte en dehors de la vue */
+                animation: slide-in 2s forwards;
+                animation-delay: 6s; /* Décaler l'animation */
+            }
+
+            .text {
+                color: #84F5F5;
+            }
+
+            #point-log {
+                color: #F3F1BA;
+            }
+
+            .parenthesis {
+                color: #EDB23F;
+            }
+
+            .typing-text::after {
+                content: '';
+                color: #A2EF87;
+                animation: write-text 5s forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes slide-in {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes write-text {
+                0% {
+                    content: 'S';
+                }
+
+                3% {
+                    content: 'Sa';
+                }
+
+                6% {
+                    content: 'Sal';
+                }
+
+                10% {
+                    content: 'Salu';
+                }
+
+                13% {
+                    content: 'Salut';
+                }
+
+                17% {
+                    content: 'Salut ';
+                }
+
+                20% {
+                    content: 'Salut m';
+                }
+
+                24% {
+                    content: 'Salut mo';
+                }
+
+                27% {
+                    content: 'Salut moi';
+                }
+
+                31% {
+                    content: 'Salut moi ';
+                }
+
+                34% {
+                    content: 'Salut moi c';
+                }
+
+                38% {
+                    content: 'Salut moi c\'';
+                }
+
+                41% {
+                    content: 'Salut moi c\'e';
+                }
+
+                45% {
+                    content: 'Salut moi c\'es';
+                }
+
+                48% {
+                    content: 'Salut moi c\'est';
+                }
+
+                52% {
+                    content: 'Salut moi c\'est ';
+                }
+
+                55% {
+                    content: 'Salut moi c\'est F';
+                }
+
+                59% {
+                    content: 'Salut moi c\'est Fl';
+                }
+
+                62% {
+                    content: 'Salut moi c\'est Flo';
+                }
+
+                66% {
+                    content: 'Salut moi c\'est Flor';
+                }
+
+                69% {
+                    content: 'Salut moi c\'est Flori';
+                }
+
+                72% {
+                    content: 'Salut moi c\'est Floria';
+                }
+
+                76% {
+                    content: 'Salut moi c\'est Florian';
+                }
+
+                79% {
+                    content: 'Salut moi c\'est Florian ';
+                }
+
+                83% {
+                    content: 'Salut moi c\'est Florian S';
+                }
+
+                86% {
+                    content: 'Salut moi c\'est Florian Su';
+                }
+
+                90% {
+                    content: 'Salut moi c\'est Florian Sun';
+                }
+
+                93% {
+                    content: 'Salut moi c\'est Florian Sune';
+                }
+
+                97% {
+                    content: 'Salut moi c\'est Florian Sune';
+                }
+
+                100% {
+                    content: 'Salut moi c\'est Florian Sune';
+                }
+            }
+        }
+    }
+}
