@@ -1,0 +1,15 @@
+.footer {
+    width: auto;
+    height: 60px;
+    background-color: #2f2f2f;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .text {
+        color: white;
+        font-family: 'Ubuntu';
+        font-size: 16px;
+    }
+}
