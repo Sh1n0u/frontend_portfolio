@@ -14,7 +14,14 @@ function Accueil() {
 
                 <img src="./codeAccueil.jpg" alt="background de l'accueil" />
             </div>
-            <div className="block2"></div>
+            <div className="block2">
+                <div className='part left'>
+                    <h2>Compétence</h2>
+                </div>
+                <div className='part right'>
+                    <h2>Expérience</h2>
+                </div>
+            </div>
         </div>
     );
 }
