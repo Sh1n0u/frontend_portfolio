@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './accueil.scss';
 
 function Accueil() {
+    useEffect(() => {
+        document.title = 'Portfolio Florian Sune'
+    }, []);
+
     return (
         <div className="page-accueil">
             <div className="block1">
