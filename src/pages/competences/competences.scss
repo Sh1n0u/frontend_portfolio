@@ -1,31 +1,24 @@
 .competence-page {
     width: 100%;
-    height: auto;
     min-height: 100vh;
     background-color: #3C3A3A;
     font-family: 'Ubuntu';
 
-    .block-section {
-        width: 100%;
+    h1 {
+        margin: 0;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
+        font-size: 40px;
+        color: #C3C3C3;
+    }
+
+    .skill-box {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         padding-top: 50px;
-    }
-
-    .block {
-        width: 500px;
-        height: 230px;
-        border-radius: 10px;
-        background-color: #2F2F2F;
-        margin: 10px 15%; // Ajout de marge pour l'espace entre les blocs
-    }
-
-    .block:nth-child(odd) {
-        align-self: flex-start; // Pour décaler les blocs impairs à gauche
-    }
-
-    .block:nth-child(even) {
-        align-self: flex-end; // Pour décaler les blocs pairs à droite
     }
 }

@@ -16,7 +16,7 @@ function Footer() {
                 <Link to="/admin">
                     <img
                         className="connexion-logo"
-                        src="./connexion-white.png"
+                        src="./images/connexion-white.png"
                         alt="logo connexion"
                     />
                 </Link>
@@ -24,7 +24,7 @@ function Footer() {
                 <Link to="/login">
                     <img
                         className="connexion-logo"
-                        src="./connexion-black.png"
+                        src="./images/connexion-black.png"
                         alt="logo connexion"
                     />
                 </Link>

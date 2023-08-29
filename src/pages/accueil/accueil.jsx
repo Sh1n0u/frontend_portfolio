@@ -16,7 +16,7 @@ function Accueil() {
                     </div>
                 </div>
 
-                <img src="./codeAccueil.jpg" alt="background de l'accueil" />
+                <img src="./images/codeAccueil.jpg" alt="background de l'accueil" />
             </div>
             <div className="block2">
                 <div className='part left'>
