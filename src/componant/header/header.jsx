@@ -5,21 +5,23 @@ import './header.scss';
 function Header() {
     return (
         <header className="header">
-            <img className="logo" src="./logoShinou.png" alt="logo" />
+            <Link to="/" className="logo-link">
+                <img className="logo" src="./logoShinou.png" alt="logo" />
+            </Link>
             <nav>
                 <ul className="navBar">
                     <li>
                         <Link to="competence">Compétence</Link>
                     </li>
-                    <div className="separator"/>
+                    <div className="separator" />
                     <li>
                         <Link to="experience">Expérience</Link>
                     </li>
-                    <div className="separator"/>
+                    <div className="separator" />
                     <li>
                         <Link to="apropos">A propos</Link>
                     </li>
-                    <div className="separator"/>
+                    <div className="separator" />
                     <li>
                         <Link to="contact">Contact</Link>
                     </li>

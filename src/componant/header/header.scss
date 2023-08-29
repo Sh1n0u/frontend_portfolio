@@ -10,7 +10,15 @@
     .logo {
         max-width: 50px;
         padding-left: 50px;
+        transition: filter 0.3s;
+        filter: contrast(100%);
+
+        &:hover {
+            filter: contrast(10%);
+        }
     }
+
+
 
     .separator {
         width: 3px;
