@@ -8,9 +8,7 @@ function Competences({ blocks }) {
 
     return (
         <div className='competence-page'>
-            <div className='block-section'>
-                
-            </div>
+            
         </div>
     );
 }
