@@ -4,4 +4,34 @@
     min-height: 100vh;
     background-color: #3C3A3A;
     font-family: 'Ubuntu';
+
+    h1 {
+        margin: 0;
+        color: #C3C3C3;
+        display: flex;
+        justify-content: center;
+        padding-top: 5%;
+    }
+
+    .list-container {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 5%;
+
+        .project-list, .message-list {
+            width: 40%;
+            height: auto;
+            background-color: #2F2F2F;
+            display: flex;
+            justify-content: center;
+
+            p {
+                color: #C3C3C3;
+                font-size: 20px;
+            }
+        }
+
+
+    }
+
 }
