@@ -1,8 +1,12 @@
-.apropos-page {
+.about-page {
     width: 100%;
     min-height: 100vh;
     background-color: #3C3A3A;
     font-family: 'Ubuntu';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 
     h1 {
         margin: 0;
@@ -11,5 +15,32 @@
         padding-top: 30px;
         font-size: 40px;
         color: #C3C3C3;
+    }
+
+    .about-container {
+        width: 70%;
+        height: 80%;
+        background-color: #2f2f2f;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .text-container {
+
+            p {
+                color: #C3C3C3;
+                font-size: 20px;
+            }
+        }
+
     }
 }
