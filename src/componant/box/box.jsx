@@ -7,7 +7,6 @@ const Box = ({ title, photoUrl, description }) => {
         <div className="box">
             <h2>{title}</h2>
             <img src={photoUrl} alt="" />
-            <p>{description}</p>
         </div>
     );
 };
@@ -15,7 +14,6 @@ const Box = ({ title, photoUrl, description }) => {
 Box.propTypes = {
     title: PropTypes.string.isRequired,
     photoUrl: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
 };
 
 export default Box;
