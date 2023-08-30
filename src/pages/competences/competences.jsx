@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './competences.scss';
-import SkillList from '../../componant/skill-list/skill-list';
+import ItemList from '../../componant/item-list/item-list';
 import skillsData from '../../assets/competences.json'
 
 
@@ -13,7 +13,7 @@ function Competences() {
         <div className="competence-page">
             <h1>Compétences</h1>
             <div>
-                <SkillList skills={skillsData} />
+                <ItemList items={skillsData} />
             </div>
 
         </div>
