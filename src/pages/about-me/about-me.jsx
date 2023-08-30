@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import './a-propos.scss';
+import './about-me.scss';
 
-function Apropos() {
+function AboutMe() {
     useEffect(() => {
         document.title = 'A propos de moi';
     }, []);
@@ -13,4 +13,4 @@ function Apropos() {
     )
 }
 
-export default Apropos
+export default AboutMe
