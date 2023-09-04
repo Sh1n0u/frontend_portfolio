@@ -10,7 +10,7 @@ function AboutMe() {
         <div className="about-page">
             <h1>A propos</h1>
             <div className="about-container">
-                <img src="./images/photo_Flo.jpg" alt="Photo Florian Sune" />
+                <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
                 <div className="text-container">
                     <p>
                         Développeur Web Fullstack curieux et attiré par le FrontEnd au plus grand dépit de mon mentor, j'ai acquis une solide expérience en HTML, CSS, JavaScript et React pour concevoir
