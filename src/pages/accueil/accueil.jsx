@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
 import './accueil.scss';
+import skillData from '../../assets/competences.json';
 
 function Accueil() {
     useEffect(() => {
         document.title = 'Portfolio Florian Sune'
     }, []);
+
+    const skillsImages = skillData.map((skill, index) => (
+        <img
+            key={index}
+            src={skill.photoUrl}
+            alt={skill.title}
+            className='skill-image'
+        />
+    ))
 
     return (
         <div className="page-accueil">
@@ -21,6 +31,9 @@ function Accueil() {
             <div className="block2">
                 <div className='part left'>
                     <h2>Compétence</h2>
+                    <div className="skills-container">
+                        {skillsImages}
+                    </div>
                 </div>
                 <div className='part right'>
                     <h2>Expérience</h2>
