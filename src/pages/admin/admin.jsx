@@ -143,8 +143,33 @@ function AdminPanel() {
         }
     };
 
+    // Fonction Delete
+    const handleDeleteProject = async (projectId) => {
+        const token = localStorage.getItem('token');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        try {
+            const response = await axios.delete(`http://localhost:4000/api/projects/${projectId}`, config);
+            console.log('Projet supprimé avec succès:', response.data);
+
+            // Mise à jour de la liste des projets après la suppression
+            setProjects((prevProjects) => prevProjects.filter((project) => project._id !== projectId));
+        } catch (error) {
+            console.error('Erreur lors de la suppression du projet:', error);
+        }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        window.location.href = '/login'
+    }
     return (
         <div className="admin-page">
+            <p className='log-out' onClick={handleLogout}>Log-out</p>
             <h1>Panneau admin</h1>
             <div className="list-container">
                 <div className="project-list">
@@ -154,7 +179,7 @@ function AdminPanel() {
                             <li key={index}>
                                 {project.title}
                                 <button onClick={() => openEditModal(project)}>Modifier</button>
-                                
+                                <button onClick={() => handleDeleteProject(project._id)}>Supprimer</button>
                             </li>
                         ))}
                     </ul>
