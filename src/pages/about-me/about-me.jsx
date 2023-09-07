@@ -8,7 +8,7 @@ function AboutMe() {
 
     return (
         <div className="about-page">
-            <h1>A propos</h1>
+            <h2>A propos</h2>
             <div className="about-container">
                 <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
                 <div className="text-container">
