@@ -1,15 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './accueil.scss';
-import skillData from '../../assets/competences.json';
+import axios from 'axios';
 
 function Accueil() {
+    const [projects, setProjects] = useState([])
+
+    // Affichage du titre de la page dans l'onglet
     useEffect(() => {
         document.title = 'Portfolio Florian Sune';
-    }, []);
 
-    const skillsImages = skillData.map((skill, index) => (
-        <img key={index} src={skill.photoUrl} alt={skill.title} className="skill-image" />
-    ));
+        axios.get('http://localhost:4000/api/projects')
+        .then ((response) => {
+            setProjects(response.data)
+        })
+        .catch((error) => {
+            console.error('Une erreur est survenue lors de la requête')
+        })
+    }, []);
 
     return (
         <div className="page-accueil">
@@ -48,12 +55,17 @@ function Accueil() {
             </div>
 
             <div className="block2">
+
                 <div className="part left">
-                    <h2>Compétence</h2>
-                    <div className="skills-container">{skillsImages}</div>
-                </div>
-                <div className="part right">
                     <h2>Expérience</h2>
+                    <ul>
+                        {projects.map((project, index) => (
+                            <li key={index}>{project.title}     </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className='part right'>
+                    <h2>Compétences</h2>
                 </div>
             </div>
         </div>

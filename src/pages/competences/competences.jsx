@@ -4,6 +4,7 @@ import ItemList from '../../componant/item-list/item-list';
 import skillsData from '../../assets/competences.json';
 
 function Competences() {
+    
     useEffect(() => {
         document.title = 'Compétences';
     }, []);
