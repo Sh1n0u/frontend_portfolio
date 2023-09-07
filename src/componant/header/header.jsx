@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './header.scss';
 
 function Header() {
+
     return (
         <header className="header">
             <Link to="/" className="logo-link">
@@ -11,22 +12,25 @@ function Header() {
             <nav>
                 <ul className="navBar">
                     <li>
-                        <Link to="competence">Compétence</Link>
+                        <Link to="/competence" >
+                            Compétence
+                        </Link>
                     </li>
                     <div className="separator" />
                     <li>
-                        <Link to="experience">Expérience</Link>
+                        <Link to="/experience" >
+                            Expérience
+                        </Link>
                     </li>
                     <div className="separator" />
                     <li>
-                        <Link to="apropos">A propos</Link>
-                    </li>
-                    <div className="separator" />
-                    <li>
-                        <Link to="contact">Contact</Link>
+                        <Link to="/contact" >
+                            Contact
+                        </Link>
                     </li>
                 </ul>
             </nav>
+
         </header>
     );
 }

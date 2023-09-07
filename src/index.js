@@ -9,7 +9,7 @@ import Footer from './componant/footer/footer';
 import Accueil from './pages/accueil/accueil';
 import Competences from './pages/competences/competences';
 import Experiences from './pages/experiences/experiences';
-import AboutMe from './pages/about-me/about-me';
+
 import Contact from './pages/contact/contact';
 import Admin from './pages/admin/admin';
 import Login from './pages/login/login';
@@ -25,7 +25,7 @@ root.render(
                 <Route path="*" element={<Error />} />
                 <Route path="competence" element={<Competences />} />
                 <Route path="experience" element={<Experiences />} />
-                <Route path="apropos" element={<AboutMe />} />
+
                 <Route path="contact" element={<Contact />} />
                 <Route path="login" element={<Login />} />
                 <Route path="admin" element={<Admin />} />
