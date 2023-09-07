@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import './competences.scss';
 import ItemList from '../../componant/item-list/item-list';
-import skillsData from '../../assets/competences.json'
-
+import skillsData from '../../assets/competences.json';
 
 function Competences() {
     useEffect(() => {
@@ -15,7 +14,6 @@ function Competences() {
             <div>
                 <ItemList items={skillsData} />
             </div>
-
         </div>
     );
 }

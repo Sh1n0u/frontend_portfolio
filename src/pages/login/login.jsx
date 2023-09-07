@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.scss';
 import axios from 'axios';
 
 function Login() {
+    useEffect(() => {
+        document.title = 'Login';
+    }, []);
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -25,15 +29,11 @@ function Login() {
                 password: password,
             });
             localStorage.setItem('token', response.data.token);
-            setIsLoggedIn(true);
+            navigate('/admin');
         } catch (error) {
             console.error('Erreur lors de la requête:', error);
         }
     };
-
-    if (isLoggedIn) {
-        return <Navigate to="/admin" />;
-    }
 
     return (
         <div className="login-page">
