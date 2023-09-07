@@ -28,7 +28,7 @@ function Contact() {
         };
 
         try {
-            axios.post('MON_ADRESSE', formData);
+            axios.post('http://localhost:4000/api/posts', formData);
 
             setEmail('');
             setMessage('');
@@ -43,7 +43,7 @@ function Contact() {
             <div className="contact-form">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="email">Adresse e-mail :</label>
+                        <label htmlFor="email"></label>
                         <input
                             type="email"
                             id="email"
@@ -54,7 +54,7 @@ function Contact() {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="message">Message :</label>
+                        <label htmlFor="message"></label>
                         <textarea
                             id="message"
                             name="message"
