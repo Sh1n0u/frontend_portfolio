@@ -8,8 +8,9 @@ function AdminPanel() {
     const [projects, setProjects] = useState([]);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
-    const [addedProject, setAddedProject] = useState(null)
+    const [addedProject, setAddedProject] = useState(null);
     const [editedProject, setEditedProject] = useState(null);
+    const [posts, SetPosts] = useState([]);
 
     const openEditModal = (project) => {
         setSelectedProject(project);
@@ -25,7 +26,7 @@ function AdminPanel() {
         setIsEditModalOpen(false);
     };
 
-    // Fonction POST
+    // Fonction POST de projet
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -47,13 +48,13 @@ function AdminPanel() {
             const response = await axios.post('http://localhost:4000/api/projects', formData, config);
             console.log('Projet ajouté avec succès:', response.data);
             closeModal();
-            setAddedProject(response.data.project)
+            setAddedProject(response.data.project);
         } catch (error) {
             console.error("Erreur lors de l'ajout du projet:", error);
         }
     };
 
-    // Fonction GET
+    // Fonction GET de projet
     useEffect(() => {
         const getProjects = async () => {
             try {
@@ -77,6 +78,79 @@ function AdminPanel() {
             });
         }
     }, [addedProject, editedProject]);
+
+    // Fonction Delete de projet
+    const handleDeleteProject = async (projectId) => {
+        const token = localStorage.getItem('token');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        try {
+            const response = await axios.delete(`http://localhost:4000/api/projects/${projectId}`, config);
+            console.log('Projet supprimé avec succès:', response.data);
+
+            // Mise à jour de la liste des projets après la suppression
+            setProjects((prevProjects) => prevProjects.filter((project) => project._id !== projectId));
+        } catch (error) {
+            console.error('Erreur lors de la suppression du projet:', error);
+        }
+    };
+
+    // Fonction PUT de projet
+    const handleEditFormSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!selectedProject) {
+            console.error('Aucun projet sélectionné pour la modification.');
+            closeModal();
+            return;
+        }
+
+        const form = event.target;
+        const formData = new FormData();
+
+        formData.append('title', form.title.value);
+        formData.append('description', form.description.value);
+        formData.append('newImage', form.newImage.files[0]);
+
+        const token = localStorage.getItem('token');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        try {
+            console.log(selectedProject._id);
+            const response = await axios.put(
+                `http://localhost:4000/api/projects/${selectedProject._id}`,
+                formData,
+                config
+            );
+            console.log('Projet modifié avec succès:', response.data);
+
+            closeModal();
+            setEditedProject(response.data.project);
+        } catch (error) {
+            console.log(selectedProject._id);
+            console.error('Erreur lors de la modification du projet:', error);
+        }
+    };
+
+    // Fonction GET des messages
+    useEffect(() => {
+        axios
+            .get('http://localhost:4000/api/posts')
+            .then((response) => {
+                SetPosts(response.data);
+            })
+            .catch((error) => {
+                console.log('erreur lors de la récupération des messages', error);
+            });
+    }, []);
 
     // Redirection user
     useEffect(() => {
@@ -102,74 +176,15 @@ function AdminPanel() {
         };
     }, []);
 
-    // Fonction PUT
-    const handleEditFormSubmit = async (event) => {
-        event.preventDefault();
-
-        if (!selectedProject) {
-            console.error('Aucun projet sélectionné pour la modification.');
-            closeModal();
-            return;
-        }
-
-        const form = event.target;
-        const formData = new FormData();
-
-        formData.append('title', form.title.value);
-        formData.append('description', form.description.value);
-        formData.append('newImage', form.newImage.files[0]);
-
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-
-        try {
-            console.log(selectedProject._id)
-            const response = await axios.put(
-                `http://localhost:4000/api/projects/${selectedProject._id}`,
-                formData,
-                config
-            );
-            console.log('Projet modifié avec succès:', response.data);
-
-            closeModal();
-            setEditedProject(response.data.project);
-        } catch (error) {
-            console.log(selectedProject._id)
-            console.error('Erreur lors de la modification du projet:', error);
-        }
-    };
-
-    // Fonction Delete
-    const handleDeleteProject = async (projectId) => {
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-
-        try {
-            const response = await axios.delete(`http://localhost:4000/api/projects/${projectId}`, config);
-            console.log('Projet supprimé avec succès:', response.data);
-
-            // Mise à jour de la liste des projets après la suppression
-            setProjects((prevProjects) => prevProjects.filter((project) => project._id !== projectId));
-        } catch (error) {
-            console.error('Erreur lors de la suppression du projet:', error);
-        }
-    };
-
     const handleLogout = () => {
-        localStorage.removeItem('token')
-        window.location.href = '/login'
-    }
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+    };
     return (
         <div className="admin-page">
-            <p className='log-out' onClick={handleLogout}>Log-out</p>
+            <p className="log-out" onClick={handleLogout}>
+                Log-out
+            </p>
             <h1>Panneau admin</h1>
             <div className="list-container">
                 <div className="project-list">
@@ -184,7 +199,43 @@ function AdminPanel() {
                         ))}
                     </ul>
                 </div>
-                {/* Modale modifier */}
+                <div className="message-list">
+                    <h2>Liste des messages</h2>
+                    {posts.map((post, index) => (
+                        <li key={index}>
+                            {post.email}
+                            {post.message}
+                        </li>
+                    ))}
+                </div>
+
+                {/* modale ajout de projet */}
+                {isModalOpen && (
+                    <div className="modal">
+                        <div className="modal-container">
+                            <span className="close" onClick={closeModal}>
+                                &times;
+                            </span>
+                            <div className="form-container">
+                                <h2>Ajouter un projet</h2>
+                                <form onSubmit={handleFormSubmit}>
+                                    <label htmlFor="title"></label>
+                                    <input type="text" name="title" placeholder="Titre du projet" />
+
+                                    <label htmlFor="image"></label>
+                                    <input id="add-picture" type="file" name="image" />
+
+                                    <label htmlFor="description"></label>
+                                    <textarea name="description"></textarea>
+
+                                    <button type="submit">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Modale modifier un projet*/}
                 {isEditModalOpen && selectedProject && (
                     <div className="modal">
                         <div className="modal-container">
@@ -209,33 +260,6 @@ function AdminPanel() {
                                     <textarea name="description" defaultValue={selectedProject.description}></textarea>
 
                                     <button type="submit">Modifier</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                <div className="message-list">
-                    <h2>Liste des messages</h2>
-                </div>
-                {isModalOpen && (
-                    <div className="modal">
-                        <div className="modal-container">
-                            <span className="close" onClick={closeModal}>
-                                &times;
-                            </span>
-                            <div className="form-container">
-                                <h2>Ajouter un projet</h2>
-                                <form onSubmit={handleFormSubmit}>
-                                    <label htmlFor="title"></label>
-                                    <input type="text" name="title" placeholder="Titre du projet" />
-
-                                    <label htmlFor="image"></label>
-                                    <input id="add-picture" type="file" name="image" />
-
-                                    <label htmlFor="description"></label>
-                                    <textarea name="description"></textarea>
-
-                                    <button type="submit">Ajouter</button>
                                 </form>
                             </div>
                         </div>
