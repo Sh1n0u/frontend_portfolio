@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './admin.scss';
-import './modal.scss';
+import './modal-admin.scss';
 
 function AdminPanel() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
     const [projects, setProjects] = useState([]);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [addedProject, setAddedProject] = useState(null);
     const [editedProject, setEditedProject] = useState(null);
-    const [posts, SetPosts] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     const openEditModal = (project) => {
         setSelectedProject(project);
@@ -18,11 +18,11 @@ function AdminPanel() {
     };
 
     const openModal = () => {
-        setIsModalOpen(true);
+        setIsModalAdminOpen(true);
     };
 
     const closeModal = () => {
-        setIsModalOpen(false);
+        setIsModalAdminOpen(false);
         setIsEditModalOpen(false);
     };
 
@@ -66,17 +66,6 @@ function AdminPanel() {
         };
 
         getProjects();
-        if (addedProject) {
-            setProjects((prevProjects) => [addedProject, ...prevProjects]);
-        }
-        if (editedProject) {
-            setProjects((prevProjects) => {
-                const updatedProjects = prevProjects.map((project) =>
-                    project._id === editedProject._id ? editedProject : project
-                );
-                return updatedProjects;
-            });
-        }
     }, [addedProject, editedProject]);
 
     // Fonction Delete de projet
@@ -145,7 +134,7 @@ function AdminPanel() {
         axios
             .get('http://localhost:4000/api/posts')
             .then((response) => {
-                SetPosts(response.data);
+                setPosts(response.data); // Utilisez "setPosts" au lieu de "SetPosts"
             })
             .catch((error) => {
                 console.log('erreur lors de la récupération des messages', error);
@@ -180,6 +169,7 @@ function AdminPanel() {
         localStorage.removeItem('token');
         window.location.href = '/login';
     };
+
     return (
         <div className="admin-page">
             <p className="log-out" onClick={handleLogout}>
@@ -208,63 +198,53 @@ function AdminPanel() {
                         </li>
                     ))}
                 </div>
-
                 {/* modale ajout de projet */}
-                {isModalOpen && (
-                    <div className="modal">
-                        <div className="modal-container">
-                            <span className="close" onClick={closeModal}>
-                                &times;
-                            </span>
-                            <div className="form-container">
-                                <h2>Ajouter un projet</h2>
-                                <form onSubmit={handleFormSubmit}>
-                                    <label htmlFor="title"></label>
-                                    <input type="text" name="title" placeholder="Titre du projet" />
+                <div className={`modal ${isModalAdminOpen ? 'modal-open' : ''}`}>
+                    <div className="modal-container">
+                        <span className="close" onClick={closeModal}>
+                            &times;
+                        </span>
+                        <div className="form-container">
+                            <h2>Ajouter un projet</h2>
+                            <form onSubmit={handleFormSubmit}>
+                                <label htmlFor="title"></label>
+                                <input type="text" name="title" />
 
-                                    <label htmlFor="image"></label>
-                                    <input id="add-picture" type="file" name="image" />
+                                <label htmlFor="image"></label>
+                                <input id="add-picture" type="file" name="image" />
 
-                                    <label htmlFor="description"></label>
-                                    <textarea name="description"></textarea>
+                                <label htmlFor="description"></label>
+                                <textarea name="description"></textarea>
 
-                                    <button type="submit">Ajouter</button>
-                                </form>
-                            </div>
+                                <button type="submit">Ajouter</button>
+                            </form>
                         </div>
                     </div>
-                )}
+                </div>
 
                 {/* Modale modifier un projet*/}
-                {isEditModalOpen && selectedProject && (
-                    <div className="modal">
-                        <div className="modal-container">
-                            <span className="close" onClick={closeModal}>
-                                &times;
-                            </span>
-                            <div className="form-container">
-                                <h2>Modifier le projet</h2>
-                                <form onSubmit={handleEditFormSubmit}>
-                                    <label htmlFor="title"></label>
-                                    <input
-                                        type="text"
-                                        name="title"
-                                        placeholder="Titre du projet"
-                                        defaultValue={selectedProject.title}
-                                    />
+                <div className={`modal ${isEditModalOpen && selectedProject ? 'modal-open' : ''}`}>
+                    <div className="modal-container">
+                        <span className="close" onClick={closeModal}>
+                            &times;
+                        </span>
+                        <div className="form-container">
+                            <h2>Modifier le projet</h2>
+                            <form onSubmit={handleEditFormSubmit}>
+                                <label htmlFor="title"></label>
+                                <input type="text" name="title" />
 
-                                    <label htmlFor="newImage"></label>
-                                    <input id="newImage" type="file" name="newImage" />
+                                <label htmlFor="newImage"></label>
+                                <input id="newImage" type="file" name="newImage" />
 
-                                    <label htmlFor="description"></label>
-                                    <textarea name="description" defaultValue={selectedProject.description}></textarea>
+                                <label htmlFor="description"></label>
+                                <textarea name="description"></textarea>
 
-                                    <button type="submit">Modifier</button>
-                                </form>
-                            </div>
+                                <button type="submit">Modifier</button>
+                            </form>
                         </div>
                     </div>
-                )}
+                </div>
             </div>
             <div className="button-container">
                 <button onClick={openModal}>Ajouter un projet</button>
