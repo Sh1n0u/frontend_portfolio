@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './accueil.scss';
 import axios from 'axios';
+import skillsData from '../../assets/competences.json';
 
 function Accueil() {
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState([]);
 
     // Affichage du titre de la page dans l'onglet
     useEffect(() => {
         document.title = 'Portfolio Florian Sune';
 
-        axios.get('http://localhost:4000/api/projects')
-        .then ((response) => {
-            setProjects(response.data)
-        })
-        .catch((error) => {
-            console.error('Une erreur est survenue lors de la requête')
-        })
+        axios
+            .get('http://localhost:4000/api/projects')
+            .then((response) => {
+                setProjects(response.data);
+            })
+            .catch((error) => {
+                console.error('Une erreur est survenue lors de la requête', error);
+            });
     }, []);
+
+
+    // Fonction de générétion de barre de progression
+    const generateProgressBars = () => {
+        return skillsData.map((competence, index) => (
+            <div key={index} className='progress-block'>
+                <img src={competence.photoUrl} alt={competence.title} />
+                <div className='progress-bar' style={{ width: `${competence.progression}%` }}>
+                    <p>{competence.progression}%</p>
+                </div>
+            </div>
+        ));
+    };
 
     return (
         <div className="page-accueil">
@@ -35,7 +51,7 @@ function Accueil() {
 
                 <img src="./images/codeAccueil.jpg" alt="background de l'accueil" />
             </div>
-            <div className='presentation'>
+            <div className="presentation">
                 <h2>Qui suis-je ? </h2>
                 <div className="about-container">
                     <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
@@ -55,18 +71,21 @@ function Accueil() {
             </div>
 
             <div className="block2">
-
-                <div className="part left">
+                <Link to="/experience" className="part left">
                     <h2>Expérience</h2>
                     <ul>
                         {projects.map((project, index) => (
-                            <li key={index}>{project.title}     </li>
+                            <li key={index}>
+                                <img src={project.imageUrl} alt="" />
+                                {project.title}
+                            </li>
                         ))}
                     </ul>
-                </div>
-                <div className='part right'>
+                </Link>
+                <Link to="/competence" className="part right">
                     <h2>Compétences</h2>
-                </div>
+                    {generateProgressBars()}
+                </Link>
             </div>
         </div>
     );
