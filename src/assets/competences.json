@@ -16,5 +16,29 @@
         "photoUrl": "./images/logo_js.png",
         "description": "Optimiser et rendre dynamique votre application avec JavaScript",
         "progression": 45
+    },
+    {
+        "title": "React",
+        "photoUrl": "./images/logo_react.png",
+        "description": "Idéal pour travailler avec des composants réutilisable",
+        "progression": 40
+    },
+    {
+        "title": "NodeJs",
+        "photoUrl": "./images/logo_nodeJs.png",
+        "description": "Produit par Google, c'est un environement d'exécution idéal pour travailler côté serveur en JavaScript",
+        "progression": 40
+    },
+    {
+        "title": "PhP",
+        "photoUrl": "./images/logo_php.png",
+        "description": "C'est pas vraiment une compétence que je maitrise mais vue que j'arrive à l'écrire sans faire de faute, je me met 1%",
+        "progression": 1
+    },
+    {
+        "title": "PhP",
+        "photoUrl": "./images/logo_php.png",
+        "description": "C'est pas vraiment une compétence que je maitrise mais vue que j'arrive à l'écrire sans faire de faute, je me met 1%",
+        "progression": 1
     }
 ]
