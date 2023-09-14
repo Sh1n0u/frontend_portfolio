@@ -30,31 +30,58 @@
         padding-top: 5%;
 
 
-        .project-list, .message-list {
+        .project-list {
             width: 40%;
             height: auto;
             min-height: 400px;
             background-color: #2F2F2F;
             display: flex;
             flex-direction: column;
-            align-items: center;
             border-radius: 10px;
-
-            ul {
-                display: flex;
-                flex-direction: column;
-            }
 
             h2 {
                 color: #C3C3C3;
                 font-size: 20px;
+                margin: 20px auto;
             }
 
             ul {
+                display: flex;
+                flex-direction: column;
                 list-style: none;
                 color: #C3C3C3;
                 font-size: 16px;
                 font-weight: 700;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0px 20px;
+
+                    button {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            button {
+                background-color: #95F867;
+                color: #2F2F2F;
+                border: none;
+                border-radius: 5px;
+                padding: 3px 20px;
+                margin-bottom: 5px;
+                cursor: pointer;
+            }
+
+            #button-delete {
+                background-color: rgb(240, 53, 53);
+            }
+
+
+            .project-list {
+                justify-content: space-between;
             }
         }
     }
@@ -62,15 +89,45 @@
     .button-container {
         display: flex;
         justify-content: center;
-        margin-top: 10%;
+        margin-top: 5%;
+
 
         button {
-            background-color: #007bff;
-            color: white;
+            background-color: #95F867;
+            color: #2F2F2F;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
+        }
+    }
+
+    .content {
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            input,
+            textarea,
+            button {
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            textarea {
+                height: 150px;
+                resize: none;
+            }
+
+            button {
+                background-color: #95F867;
+                color: #2F2F2F;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
         }
     }
 }

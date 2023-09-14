@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './admin.scss';
-import './modal-admin.scss';
+import Modal from '../../componant/modal/modal';
 
 function AdminPanel() {
     const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
@@ -10,7 +10,6 @@ function AdminPanel() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [addedProject, setAddedProject] = useState(null);
     const [editedProject, setEditedProject] = useState(null);
-    const [posts, setPosts] = useState([]);
 
     const openEditModal = (project) => {
         setSelectedProject(project);
@@ -129,18 +128,6 @@ function AdminPanel() {
         }
     };
 
-    // Fonction GET des messages
-    useEffect(() => {
-        axios
-            .get('http://localhost:4000/api/posts')
-            .then((response) => {
-                setPosts(response.data); // Utilisez "setPosts" au lieu de "SetPosts"
-            })
-            .catch((error) => {
-                console.log('erreur lors de la récupération des messages', error);
-            });
-    }, []);
-
     // Redirection user
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -149,20 +136,6 @@ function AdminPanel() {
         } else {
             document.title = 'Panneau admin';
         }
-    }, []);
-
-    // Fermeture modale par escape
-    useEffect(() => {
-        const handleKeyPress = (event) => {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        };
-        window.addEventListener('keydown', handleKeyPress);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyPress);
-        };
     }, []);
 
     const handleLogout = () => {
@@ -183,28 +156,21 @@ function AdminPanel() {
                         {projects.map((project, index) => (
                             <li key={index}>
                                 {project.title}
-                                <button onClick={() => openEditModal(project)}>Modifier</button>
-                                <button onClick={() => handleDeleteProject(project._id)}>Supprimer</button>
+                                <div>
+                                    <button onClick={() => openEditModal(project)}>Modifier</button>
+                                    <button id="button-delete" onClick={() => handleDeleteProject(project._id)}>
+                                        Supprimer
+                                    </button>
+                                </div>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className="message-list">
-                    <h2>Liste des messages</h2>
-                    {posts.map((post, index) => (
-                        <li key={index}>
-                            {post.email}
-                            {post.message}
-                        </li>
-                    ))}
-                </div>
+
                 {/* modale ajout de projet */}
-                <div className={`modal ${isModalAdminOpen ? 'modal-open' : ''}`}>
-                    <div className="modal-container">
-                        <span className="close" onClick={closeModal}>
-                            &times;
-                        </span>
-                        <div className="form-container">
+                <Modal isOpen={isModalAdminOpen} onClose={closeModal}>
+                    <>
+                        <div className="content">
                             <h2>Ajouter un projet</h2>
                             <form onSubmit={handleFormSubmit}>
                                 <label htmlFor="title"></label>
@@ -219,32 +185,29 @@ function AdminPanel() {
                                 <button type="submit">Ajouter</button>
                             </form>
                         </div>
-                    </div>
-                </div>
+                    </>
+                </Modal>
 
                 {/* Modale modifier un projet*/}
-                <div className={`modal ${isEditModalOpen && selectedProject ? 'modal-open' : ''}`}>
-                    <div className="modal-container">
-                        <span className="close" onClick={closeModal}>
-                            &times;
-                        </span>
-                        <div className="form-container">
+                <Modal isOpen={isEditModalOpen} onClose={closeModal}>
+                    <>
+                        <div className="content">
                             <h2>Modifier le projet</h2>
                             <form onSubmit={handleEditFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" />
+                                <input type="text" name="title" defaultValue={selectedProject.title}/>
 
                                 <label htmlFor="newImage"></label>
                                 <input id="newImage" type="file" name="newImage" />
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description"></textarea>
+                                <textarea name="description" defaultValue={selectedProject.description}></textarea>
 
                                 <button type="submit">Modifier</button>
                             </form>
                         </div>
-                    </div>
-                </div>
+                    </>
+                </Modal>
             </div>
             <div className="button-container">
                 <button onClick={openModal}>Ajouter un projet</button>
