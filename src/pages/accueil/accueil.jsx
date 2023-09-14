@@ -21,13 +21,12 @@ function Accueil() {
             });
     }, []);
 
-
     // Fonction de générétion de barre de progression
     const generateProgressBars = () => {
         return skillsData.map((competence, index) => (
-            <div key={index} className='progress-block'>
+            <div key={index} className="progress-block">
                 <img src={competence.photoUrl} alt={competence.title} />
-                <div className='progress-bar' style={{ width: `${competence.progression}%` }}>
+                <div className="progress-bar" style={{ width: `${competence.progression}%` }}>
                     <p>{competence.progression}%</p>
                 </div>
             </div>
@@ -72,18 +71,24 @@ function Accueil() {
 
             <div className="block2">
                 <Link to="/experience" className="part left">
-                    <h2>Expérience</h2>
-                    <ul>
-                        {projects.map((project, index) => (
-                            <li key={index}>
-                                <img src={project.imageUrl} alt="" />
-                                {project.title}
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="title-part">
+                        <h2>Expérience</h2>
+                    </div>
+                    <div className="content">
+                        <ul>
+                            {projects.map((project, index) => (
+                                <li key={index}>
+                                    <img src={project.imageUrl} alt="Aperçu du projet" />
+                                    {project.title}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </Link>
                 <Link to="/competence" className="part right">
+                <div className="title-part">
                     <h2>Compétences</h2>
+                </div>
                     {generateProgressBars()}
                 </Link>
             </div>
