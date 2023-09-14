@@ -5,35 +5,105 @@
     font-family: 'Ubuntu';
     padding-top: 60px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     h1 {
-        margin: 0;
-        display: flex;
-        justify-content: center;
+        margin: 0 auto 20px auto;
         padding-top: 30px;
         font-size: 40px;
+        color: #C3C3C3;
+    }
+
+    .text {
+        margin: 0 auto;
+        background-color: #2f2f2f;
+        padding: 20px;
+        border-radius: 10px;
         color: #C3C3C3;
     }
 
     .contact-form {
         margin: auto;
         width: 350px;
-        height: auto;
+        height: 250px;
         background-color: #2f2f2f;
         padding: 20px;
         margin-top: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius: 10px;
+
 
         .form-group {
             margin-top: 20px;
             display: flex;
             justify-content: center;
 
+            #email,
+            #message {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            #message {
+                height: 100px;
+                margin-top: 20px;
+            }
+
+            input {
+                text-align: center;
+                border-radius: 10px;
+            }
         }
 
-        #email, #message {
-            width: 100%;
-        }
+        .bn53 {
+            background-color: #95F867;
+            padding: 7px;
+            width: 100px;
+            font-family: inherit;
+            font-weight: 600;
+            border-radius: 5px;
+
+            animation: bn53bounce 4s infinite;
+            cursor: pointer;
+            border: none;
+          }
+
+          @keyframes bn53bounce {
+            5%,
+            50% {
+              transform: scale(1);
+            }
+
+            10% {
+              transform: scale(1);
+            }
+
+            15% {
+              transform: scale(1);
+            }
+
+            20% {
+              transform: scale(1) rotate(-5deg);
+            }
+
+            25% {
+              transform: scale(1) rotate(5deg);
+            }
+
+            30% {
+              transform: scale(1) rotate(-3deg);
+            }
+
+            35% {
+              transform: scale(1) rotate(2deg);
+            }
+
+            40% {
+              transform: scale(1) rotate(0);
+            }
+          }
     }
+
+
 }

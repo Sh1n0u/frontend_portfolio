@@ -40,6 +40,7 @@ function Contact() {
     return (
         <div className="contact-page">
             <h1>Contact</h1>
+            <div className='text'>N'hésitez pas à m'envoyez vos demande, à me partager vos avis et vos réclamations, ou simplement à passer dire Bonjour</div>
             <div className="contact-form">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -48,6 +49,7 @@ function Contact() {
                             type="email"
                             id="email"
                             name="email"
+                            placeholder='Votre adresse mail'
                             value={email}
                             onChange={handleEmailChange}
                             required
@@ -58,13 +60,14 @@ function Contact() {
                         <textarea
                             id="message"
                             name="message"
+                            placeholder='Votre message'
                             value={message}
                             onChange={handleMessageChange}
                             required
                         ></textarea>
                     </div>
                     <div className="form-group">
-                        <button type="submit">Envoyer</button>
+                        <button type="submit" className='bn53'>Envoyer</button>
                     </div>
                 </form>
             </div>
