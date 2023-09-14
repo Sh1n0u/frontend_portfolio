@@ -15,6 +15,7 @@ import Admin from './pages/admin/admin';
 import Login from './pages/login/login';
 import Error from './pages/error/error';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
@@ -25,7 +26,6 @@ root.render(
                 <Route path="*" element={<Error />} />
                 <Route path="competence" element={<Competences />} />
                 <Route path="experience" element={<Experiences />} />
-
                 <Route path="contact" element={<Contact />} />
                 <Route path="login" element={<Login />} />
                 <Route path="admin" element={<Admin />} />
