@@ -174,13 +174,13 @@ function AdminPanel() {
                             <h2>Ajouter un projet</h2>
                             <form onSubmit={handleFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" />
+                                <input type="text" name="title" id='title'/>
 
                                 <label htmlFor="image"></label>
-                                <input id="add-picture" type="file" name="image" />
+                                <input id="image" type="file" name="image" />
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description"></textarea>
+                                <textarea name="description" id='description'></textarea>
 
                                 <button type="submit">Ajouter</button>
                             </form>
@@ -195,13 +195,13 @@ function AdminPanel() {
                             <h2>Modifier le projet</h2>
                             <form onSubmit={handleEditFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" defaultValue={selectedProject.title}/>
+                                <input type="text" name="title" id='title' defaultValue={selectedProject ? selectedProject.title : ''}/>
 
                                 <label htmlFor="newImage"></label>
                                 <input id="newImage" type="file" name="newImage" />
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description" defaultValue={selectedProject.description}></textarea>
+                                <textarea name="description" id='description' defaultValue={selectedProject ? selectedProject.description : ''}></textarea>
 
                                 <button type="submit">Modifier</button>
                             </form>
