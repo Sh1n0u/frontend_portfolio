@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Box from '../../componant/box/box';
+import Modal from '../../componant/modal/modal';
 import './experiences.scss';
-import './modal-experience.scss'
 
 function Experiences() {
     const [projects, setProjects] = useState([]);
@@ -18,25 +18,6 @@ function Experiences() {
         setSelectedProject(null);
         setIsModalOpen(false);
     };
-
-    useEffect(() => {
-        const handleEscKeyPress = (event) => {
-            if (event.key === 'Escape' && isModalOpen) {
-                closeModal();
-            }
-        };
-
-        // Ajouter le gestionnaire d'événements lors de l'ouverture de la modale
-        if (isModalOpen) {
-            window.addEventListener('keydown', handleEscKeyPress);
-        }
-
-        // Supprimer le gestionnaire d'événements lors de la fermeture de la modale ou du démontage du composant
-        return () => {
-            window.removeEventListener('keydown', handleEscKeyPress);
-        };
-    }, [isModalOpen]);
-
 
     // Fonction GET génération de projet
     useEffect(() => {
@@ -60,21 +41,20 @@ function Experiences() {
             <h1>Expériences</h1>
             <div className="project-list">{projectItem}</div>
 
-            {/* Modale */}
-            <div className={`modal ${isModalOpen ? 'modal-open' : ''}`}>
-                <div className="modal-container">
-                    <span className="close" onClick={closeModal}>
-                        &times;
-                    </span>
-                    <div className="content">
-                        <h2>{selectedProject && selectedProject.title}</h2>
-                        <div>
-                            <img src={selectedProject && selectedProject.imageUrl} alt="Aperçu du projet" />
-                            <p>{selectedProject && selectedProject.description}</p>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                {selectedProject && (
+                    <>
+                        <div className="content">
+                            <h2>{selectedProject?.title}</h2>
+                            <div>
+                                {/* eslint-disable-next-line */}
+                                <img src={selectedProject?.imageUrl} alt="Photo du projet" />
+                                <p>{selectedProject?.description}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </>
+                )}
+            </Modal>
         </div>
     );
 }
