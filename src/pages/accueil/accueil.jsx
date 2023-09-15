@@ -35,7 +35,7 @@ function Accueil() {
 
     return (
         <div className="page-accueil">
-            <div className="block1">
+            <div className="banner-title">
                 <div className="title">
                     <h1 className="text">
                         Console<span id="point-log">.log</span>
@@ -51,10 +51,10 @@ function Accueil() {
                 <img src="./images/codeAccueil.jpg" alt="background de l'accueil" />
             </div>
             <div className="presentation">
-                <h2>Qui suis-je ? </h2>
                 <div className="about-container">
                     <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
                     <div className="text-container">
+                    <h2>Qui suis-je ? </h2>
                         <p>
                             Développeur Web Fullstack curieux et attiré par le FrontEnd au plus grand dépit de mon
                             mentor, j'ai acquis une solide expérience en HTML, CSS, JavaScript et React pour concevoir
@@ -69,7 +69,7 @@ function Accueil() {
                 </div>
             </div>
 
-            <div className="block2">
+            <div className="block-experience">
                 <Link to="/experience" className="part left">
                     <div className="title-part">
                         <h2>Expérience</h2>
@@ -85,11 +85,16 @@ function Accueil() {
                         </ul>
                     </div>
                 </Link>
-                <Link to="/competence" className="part right">
-                <div className="title-part">
-                    <h2>Compétences</h2>
+                <div className="part right">
+                    <p>blablabla</p>
                 </div>
-                    {generateProgressBars()}
+            </div>
+            <div className="block-competence">
+                <Link to="/competence" className="part right">
+                    <div className="title-part">
+                        <h2>Compétences</h2>
+                    </div>
+                    <div className="competence-content">{generateProgressBars()}</div>
                 </Link>
             </div>
         </div>
