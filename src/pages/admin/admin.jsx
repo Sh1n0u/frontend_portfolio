@@ -31,10 +31,15 @@ function AdminPanel() {
 
         const form = event.target;
         const formData = new FormData();
+        const showOnHomepage = form.showOnHomepage.checked;
 
         formData.append('title', form.title.value);
         formData.append('description', form.description.value);
         formData.append('image', form.image.files[0]);
+
+
+
+        formData.append('showOnHomepage', showOnHomepage);
 
         const token = localStorage.getItem('token');
         const config = {
@@ -174,13 +179,16 @@ function AdminPanel() {
                             <h2>Ajouter un projet</h2>
                             <form onSubmit={handleFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" id='title'/>
+                                <input type="text" name="title" id="title" />
 
                                 <label htmlFor="image"></label>
                                 <input id="image" type="file" name="image" />
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description" id='description'></textarea>
+                                <textarea name="description" id="description"></textarea>
+
+                                <label htmlFor="showOnHomepage">Afficher sur la page d'accueil</label>
+                                <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
 
                                 <button type="submit">Ajouter</button>
                             </form>
@@ -195,13 +203,25 @@ function AdminPanel() {
                             <h2>Modifier le projet</h2>
                             <form onSubmit={handleEditFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" id='title' defaultValue={selectedProject ? selectedProject.title : ''}/>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    defaultValue={selectedProject ? selectedProject.title : ''}
+                                />
 
                                 <label htmlFor="newImage"></label>
                                 <input id="newImage" type="file" name="newImage" />
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description" id='description' defaultValue={selectedProject ? selectedProject.description : ''}></textarea>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    defaultValue={selectedProject ? selectedProject.description : ''}
+                                ></textarea>
+
+                                <label htmlFor="showOnHomepage">Afficher sur la page d'accueil</label>
+                                <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
 
                                 <button type="submit">Modifier</button>
                             </form>
