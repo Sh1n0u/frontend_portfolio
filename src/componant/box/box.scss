@@ -21,8 +21,10 @@
     }
 
     img {
-        width: 30%;
-        height: 50%;
+        width: 300px;
+        height: 100px;
+        margin-bottom: 10px;
+        object-fit: cover;
         padding-top: 5%;
         max-height: 150px;
     }
@@ -32,4 +34,3 @@
         text-align: center;
     }
 }
-
