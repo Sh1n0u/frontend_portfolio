@@ -19,30 +19,28 @@ function Contact() {
         setMessage(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
 
-        const formData = {
-            email: email,
-            message: message,
-        };
-
+    const sendEmail = async (email, message) => {
         try {
-            axios.post('http://localhost:4000/api/posts', formData);
+            const response = await axios.post('http://localhost:4000/api/nodemailer/sendEmail', {
+                email: email,
+                message: message,
+            })
 
-            setEmail('');
-            setMessage('');
+            console.log(response.data.message)
         } catch (error) {
-            console.error("Erreur lors de l'envoi de la requête POST :", error);
+            console.error('Erreur lors de l\'envoi de l\'e-mail :', error)
         }
-    };
+    }
+
+    sendEmail(email, message)
 
     return (
         <div className="contact-page">
             <h1>Contact</h1>
             <div className='text'>N'hésitez pas à m'envoyez vos demande, à me partager vos avis et vos réclamations, ou simplement à passer dire Bonjour</div>
             <div className="contact-form">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={sendEmail}>
                     <div className="form-group">
                         <label htmlFor="email"></label>
                         <input
@@ -76,3 +74,22 @@ function Contact() {
 }
 
 export default Contact;
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     const formData = {
+    //         email: email,
+    //         message: message,
+    //     };
+
+    //     try {
+    //         axios.post('http://localhost:4000/api/posts', formData);
+
+    //         setEmail('');
+    //         setMessage('');
+    //     } catch (error) {
+    //         console.error("Erreur lors de l'envoi de la requête POST :", error);
+    //     }
+    // };
