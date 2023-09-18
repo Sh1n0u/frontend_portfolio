@@ -1,109 +1,151 @@
 .contact-page {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #3c3c3a;
-    font-family: 'Ubuntu';
-    padding-top: 60px;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #3c3c3a;
+	font-family: 'Ubuntu';
+	padding-top: 60px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    h1 {
-        margin: 0 auto 20px auto;
-        padding-top: 30px;
-        font-size: 40px;
-        color: #C3C3C3;
-    }
-
-    .text {
-        margin: 0 auto;
-        background-color: #2f2f2f;
-        padding: 20px;
-        border-radius: 10px;
-        color: #C3C3C3;
-    }
-
-    .contact-form {
-        margin: auto;
-        width: 350px;
-        height: 250px;
-        background-color: #2f2f2f;
-        padding: 20px;
-        margin-top: 50px;
-        border-radius: 10px;
+	display: flex;
+	flex-direction: column;
 
 
-        .form-group {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
+	h1 {
+		margin: 50px auto 50px auto;
+		padding-top: 30px;
+		font-size: 40px;
+		color: #C3C3C3;
+	}
 
-            #email,
-            #message {
-                width: 100%;
-                border-radius: 10px;
-            }
+	.text {
+		margin: 0 auto 50px auto;
+		background-color: #2f2f2f;
+		padding: 20px;
+		border-radius: 10px;
+		color: #C3C3C3;
+	}
 
-            #message {
-                height: 100px;
-                margin-top: 20px;
-            }
+	.contact-form {
+		margin: 30px auto 50px;
+		width: 350px;
+		height: 250px;
+		background-color: #2f2f2f;
+		padding: 20px;
+		margin-top: 50px;
+		border-radius: 10px;
 
-            input {
-                text-align: center;
-                border-radius: 10px;
-            }
-        }
 
-        .bn53 {
-            background-color: #95F867;
-            padding: 7px;
-            width: 100px;
-            font-family: inherit;
-            font-weight: 600;
-            border-radius: 5px;
+		.form-group {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
 
-            animation: bn53bounce 4s infinite;
-            cursor: pointer;
-            border: none;
-          }
+			#email,
+			#message {
+				width: 100%;
+				border-radius: 10px;
+			}
 
-          @keyframes bn53bounce {
-            5%,
-            50% {
-              transform: scale(1);
-            }
+			#message {
+				height: 100px;
+				margin-top: 20px;
+			}
 
-            10% {
-              transform: scale(1);
-            }
+			input {
+				text-align: center;
+				border-radius: 10px;
+			}
+		}
 
-            15% {
-              transform: scale(1);
-            }
+		.bn53 {
+			background-color: #95F867;
+			padding: 7px;
+			width: 100px;
+			font-family: inherit;
+			font-weight: 600;
+			border-radius: 5px;
 
-            20% {
-              transform: scale(1) rotate(-5deg);
-            }
+			animation: bn53bounce 4s infinite;
+			cursor: pointer;
+			border: none;
+		}
 
-            25% {
-              transform: scale(1) rotate(5deg);
-            }
+		@keyframes bn53bounce {
 
-            30% {
-              transform: scale(1) rotate(-3deg);
-            }
+			5%,
+			50% {
+				transform: scale(1);
+			}
 
-            35% {
-              transform: scale(1) rotate(2deg);
-            }
+			10% {
+				transform: scale(1);
+			}
 
-            40% {
-              transform: scale(1) rotate(0);
-            }
-          }
-    }
+			15% {
+				transform: scale(1);
+			}
 
+			20% {
+				transform: scale(1) rotate(-5deg);
+			}
+
+			25% {
+				transform: scale(1) rotate(5deg);
+			}
+
+			30% {
+				transform: scale(1) rotate(-3deg);
+			}
+
+			35% {
+				transform: scale(1) rotate(2deg);
+			}
+
+			40% {
+				transform: scale(1) rotate(0);
+			}
+		}
+	}
+
+	.social-network {
+		margin: 50px auto;
+		width: 60%;
+		height: 30px;
+		background-color: #2f2f2f;
+		border-radius: 10px;
+		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.link {
+			display: flex;
+			text-decoration: none;
+
+			img {
+				width: 50px;
+				height: auto;
+			}
+
+			p {
+				padding-left: 10px;
+				color: #C3C3C3;
+			}
+
+			.preview {
+				position: absolute;
+				bottom: 0;
+				left: auto;
+
+				img {
+					width: 250px;
+				height: auto;
+				border-radius: 10px;
+				}
+
+			}
+		}
+
+
+	}
 
 }
