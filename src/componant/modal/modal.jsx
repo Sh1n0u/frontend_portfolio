@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './modal.scss';
 
 function Modal({ isOpen, onClose, children }) {
@@ -18,7 +18,7 @@ function Modal({ isOpen, onClose, children }) {
         return () => {
             window.removeEventListener('keydown', handleEscKeyPress);
         };
-    }, []);
+    }, [isOpen, onClose]);
 
     return (
         <div className={`modal ${isOpen ? 'modal-open' : ''}`}>
