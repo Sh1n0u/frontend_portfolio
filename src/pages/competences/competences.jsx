@@ -33,7 +33,7 @@ function Competences() {
                         <div className="content">
                             <h2>{selectedSkill?.title}</h2>
                             <div>
-                                <img src={selectedSkill?.photoUrl} alt="Logo de la compétence" />
+                                <img src={selectedSkill?.photoUrl} alt="Logo de la compétence" className='skill-logo'/>
                                 <p>{selectedSkill?.description}</p>
                             </div>
                         </div>
