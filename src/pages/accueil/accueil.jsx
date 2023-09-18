@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'intersection-observer';
 import './accueil.scss';
 import axios from 'axios';
 import skillsData from '../../assets/competences.json';
 
 function Accueil() {
     const [projects, setProjects] = useState([]);
+    const [hoveredProject, setHoveredProject] = useState(null);
 
     // Affichage du titre de la page dans l'onglet
     useEffect(() => {
@@ -20,6 +22,14 @@ function Accueil() {
                 console.error('Une erreur est survenue lors de la requête', error);
             });
     }, []);
+
+    // Affichage de la description lors du passage de la souris sur un projet
+    const handleProjectMouseEnter = (project) => {
+        setHoveredProject(project.description);
+    };
+    const handleProjectMouseLeave = () => {
+        setHoveredProject(null);
+    };
 
     // Fonction de générétion de barre de progression
     const generateProgressBars = () => {
@@ -54,7 +64,7 @@ function Accueil() {
                 <div className="about-container">
                     <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
                     <div className="text-container">
-                    <h2>Qui suis-je ? </h2>
+                        <h2>Qui suis-je ? </h2>
                         <p>
                             Développeur Web Fullstack curieux et attiré par le FrontEnd au plus grand dépit de mon
                             mentor, j'ai acquis une solide expérience en HTML, CSS, JavaScript et React pour concevoir
@@ -70,23 +80,30 @@ function Accueil() {
             </div>
 
             <div className="block-experience">
-                <Link to="/experience" className="part left">
+                <div to="/experience" className="part left">
                     <div className="title-part">
                         <h2>Expérience</h2>
                     </div>
                     <div className="content">
                         <ul>
                             {projects.map((project, index) => (
-                                <li key={index}>
+                                <li
+                                    key={index}
+                                    onMouseEnter={() => handleProjectMouseEnter(project)}
+                                    onMouseLeave={handleProjectMouseLeave}
+                                >
                                     <img src={project.imageUrl} alt="Aperçu du projet" />
                                     {project.title}
                                 </li>
                             ))}
                         </ul>
                     </div>
-                </Link>
+                    <Link to="/experience" className="show-more">
+                        <p>Voir plus</p>
+                    </Link>
+                </div>
                 <div className="part right">
-                    <p>blablabla</p>
+                    <p>{hoveredProject || 'blablabla'}</p>
                 </div>
             </div>
             <div className="block-competence">
