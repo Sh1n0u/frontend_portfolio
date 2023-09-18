@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
     "eslint": "^8.47.0",
+    "intersection-observer": "^0.12.2",
+    "nodemailer": "^6.9.5",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
