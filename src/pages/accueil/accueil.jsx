@@ -13,14 +13,16 @@ function Accueil() {
     useEffect(() => {
         document.title = 'Portfolio Florian Sune';
 
-        axios
-            .get('http://localhost:4000/api/projects')
-            .then((response) => {
+        const getSelectedProjects = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/projects/selected');
                 setProjects(response.data);
-            })
-            .catch((error) => {
-                console.error('Une erreur est survenue lors de la requête', error);
-            });
+            } catch (error) {
+                console.error('Erreur lors de la récupération des projets sélectionnés:', error);
+            }
+        };
+
+        getSelectedProjects();
     }, []);
 
     // Affichage de la description lors du passage de la souris sur un projet
@@ -103,7 +105,14 @@ function Accueil() {
                     </Link>
                 </div>
                 <div className="part right">
-                    <p>{hoveredProject || 'blablabla'}</p>
+                    <p id="textTransition" className={hoveredProject ? 'hidden' : ''}>
+                        Dans ces pages, vous trouverez un échantillon de mes réalisations les plus récentes. Chacun de
+                        ces projets a été conçu avec passion, développé avec précision et façonné pour répondre aux
+                        besoins spécifiques de mes clients et des utilisateurs finaux.
+                    </p>
+                    <p id="textTransition" className={hoveredProject ? '' : 'hidden'}>
+                        {hoveredProject}
+                    </p>
                 </div>
             </div>
             <div className="block-competence">
