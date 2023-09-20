@@ -8,6 +8,33 @@ import skillsData from '../../assets/competences.json';
 function Accueil() {
     const [projects, setProjects] = useState([]);
     const [hoveredProject, setHoveredProject] = useState(null);
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [showImage, setShowImage] = useState(false);
+
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value);
+    };
+
+    const sendEmail = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:4000/api/nodemailer/sendEmail', {
+                email: email,
+                message: message,
+            });
+
+            console.log(response.data.message);
+        } catch (error) {
+            console.error("Erreur lors de l'envoi de l'e-mail :", error);
+        }
+    };
 
     // Affichage du titre de la page dans l'onglet
     useEffect(() => {
@@ -62,6 +89,7 @@ function Accueil() {
 
                 <img src="./images/codeAccueil.jpg" alt="background de l'accueil" />
             </div>
+
             <div className="presentation">
                 <div className="about-container">
                     <img src="./images/photo_Flo.jpg" alt="Florian Sune" />
@@ -106,6 +134,9 @@ function Accueil() {
                 </div>
                 <div className="part right">
                     <p id="textTransition" className={hoveredProject ? 'hidden' : ''}>
+                        <span>
+                            <img src="./images/bannière_projet.png" alt="bannière des projets" />
+                        </span>
                         Dans ces pages, vous trouverez un échantillon de mes réalisations les plus récentes. Chacun de
                         ces projets a été conçu avec passion, développé avec précision et façonné pour répondre aux
                         besoins spécifiques de mes clients et des utilisateurs finaux.
@@ -115,6 +146,7 @@ function Accueil() {
                     </p>
                 </div>
             </div>
+
             <div className="block-competence">
                 <Link to="/competence" className="part right">
                     <div className="title-part">
@@ -122,6 +154,74 @@ function Accueil() {
                     </div>
                     <div className="competence-content">{generateProgressBars()}</div>
                 </Link>
+            </div>
+
+            <div className="block-contact">
+                <div className="text">
+                    N'hésitez pas à m'envoyez vos demande, à me partager vos avis et vos réclamations, ou simplement à
+                    passer dire Bonjour
+                </div>
+                <div className="central">
+                    <div className="part-left">
+                        <form onSubmit={sendEmail}>
+                            <div className="form-group">
+                                <label htmlFor="email"></label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Votre adresse mail"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="message"></label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Votre message"
+                                    value={message}
+                                    onChange={handleMessageChange}
+                                    required
+                                ></textarea>
+                            </div>
+                            <div className="form-group">
+                                <button type="submit" className="bn53">
+                                    Envoyer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="part-right"></div>
+                </div>
+                <div className="social-network">
+                    <Link to="https://github.com/Sh1n0u" className="link">
+                        <img src="./images/logo_github.png" alt="logo Git" />
+                        <p>lien Github</p>
+                    </Link>
+                    <Link to="https://www.instagram.com/" className="link">
+                        <img src="./images/logo_insta.png" alt="logo Git" />
+                        <p>Instagram</p>
+                    </Link>
+                    <Link to="https://fr.linkedin.com/" className="link">
+                        <img src="./images/logo_linkedin.png" alt="logo Git" />
+                        <p>Linkedin</p>
+                    </Link>
+                    <div
+                        className="link"
+                        onMouseEnter={() => setShowImage(true)}
+                        onMouseLeave={() => setShowImage(false)}
+                    >
+                        {showImage ? (
+                            <img className='QR-code' src="./images/QR_telegram.jpg" alt="QR code de mon Telegram" />
+                        ) : (
+                            <img src="./images/logo_telegram.png" alt="logo Git" />
+                        )}
+                        <p>Telegram</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
