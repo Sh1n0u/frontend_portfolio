@@ -22,12 +22,6 @@ function Header() {
                             Expérience
                         </Link>
                     </li>
-                    <div className="separator" />
-                    <li>
-                        <Link to="/contact" >
-                            Contact
-                        </Link>
-                    </li>
                 </ul>
             </nav>
 
