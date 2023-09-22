@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './admin.scss';
 import Modal from '../../componant/modal/modal';
+import QuillEditor from '../../componant/quill-editor/quill-editor';
 
 function AdminPanel() {
     const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
@@ -10,6 +11,7 @@ function AdminPanel() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [addedProject, setAddedProject] = useState(null);
     const [editedProject, setEditedProject] = useState(null);
+    const [description, setDescription] = useState('');
 
     const openEditModal = (project) => {
         setSelectedProject(project);
@@ -25,20 +27,18 @@ function AdminPanel() {
         setIsEditModalOpen(false);
     };
 
-    // Fonction POST de projet
+    // Requete POST
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(description);
 
         const form = event.target;
         const formData = new FormData();
         const showOnHomepage = form.showOnHomepage.checked;
 
         formData.append('title', form.title.value);
-        formData.append('description', form.description.value);
+        formData.append('description', description);
         formData.append('image', form.image.files[0]);
-
-
-
         formData.append('showOnHomepage', showOnHomepage);
 
         const token = localStorage.getItem('token');
@@ -105,8 +105,11 @@ function AdminPanel() {
         const form = event.target;
         const formData = new FormData();
 
+        console.log(selectedProject.description);
+        console.log(selectedProject)
+
         formData.append('title', form.title.value);
-        formData.append('description', form.description.value);
+        formData.append('description', selectedProject.description);
         formData.append('newImage', form.newImage.files[0]);
 
         const token = localStorage.getItem('token');
@@ -117,7 +120,6 @@ function AdminPanel() {
         };
 
         try {
-            console.log(selectedProject._id);
             const response = await axios.put(
                 `http://localhost:4000/api/projects/${selectedProject._id}`,
                 formData,
@@ -179,18 +181,24 @@ function AdminPanel() {
                             <h2>Ajouter un projet</h2>
                             <form onSubmit={handleFormSubmit}>
                                 <label htmlFor="title"></label>
-                                <input type="text" name="title" id="title" />
+                                <input type="text" name="title" id="title" placeholder="Titre du projet" />
 
-                                <label htmlFor="image"></label>
-                                <input id="image" type="file" name="image" />
+                                <div>
+                                    <label htmlFor="image"></label>
+                                    <input id="image" type="file" name="image" />
+                                </div>
 
                                 <label htmlFor="description"></label>
-                                <textarea name="description" id="description"></textarea>
+                                <QuillEditor value={description} onChange={setDescription} />
 
-                                <label htmlFor="showOnHomepage">Afficher sur la page d'accueil</label>
-                                <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
+                                <div className="checkbox">
+                                    <label htmlFor="showOnHomepage">Affichage</label>
+                                    <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
+                                </div>
 
-                                <button type="submit">Ajouter</button>
+                                <button type="submit" className="submit">
+                                    Ajouter
+                                </button>
                             </form>
                         </div>
                     </>
@@ -210,20 +218,30 @@ function AdminPanel() {
                                     defaultValue={selectedProject ? selectedProject.title : ''}
                                 />
 
-                                <label htmlFor="newImage"></label>
-                                <input id="newImage" type="file" name="newImage" />
+                                <div>
+                                    <label htmlFor="newImage"></label>
+                                    <input id="newImage" type="file" name="newImage" />
+                                </div>
 
                                 <label htmlFor="description"></label>
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    defaultValue={selectedProject ? selectedProject.description : ''}
-                                ></textarea>
+                                <QuillEditor
+                                    value={selectedProject ? selectedProject.description : ''}
+                                    onChange={(newDescription) => {
+                                        setSelectedProject((prevProject) => ({
+                                            ...prevProject,
+                                            description: newDescription,
+                                        }));
+                                    }}
+                                />
 
-                                <label htmlFor="showOnHomepage">Afficher sur la page d'accueil</label>
-                                <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
+                                <div className="checkbox">
+                                    <label htmlFor="showOnHomepage">Affichage</label>
+                                    <input type="checkbox" name="showOnHomepage" id="showOnHomepage" />
+                                </div>
 
-                                <button type="submit">Modifier</button>
+                                <button type="submit" className="submit">
+                                    Modifier
+                                </button>
                             </form>
                         </div>
                     </>

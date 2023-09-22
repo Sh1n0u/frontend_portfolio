@@ -21,7 +21,7 @@ function Competences() {
     };
 
     const competenceItems = skillsData.map((skill, index) => (
-        <Box key={index} title={skill.title} photoUrl={skill.photoUrl} onClick={() => openModal(skill)} />
+        <Box key={index} title={skill.title} photoUrl={skill.photoUrl} onClick={() => openModal(skill)} imgClass='img-competence'/>
     ));
 
     return (

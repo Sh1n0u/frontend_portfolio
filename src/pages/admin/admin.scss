@@ -110,7 +110,7 @@
 
             input,
             textarea,
-            button {
+            .submit {
                 text-align: center;
                 margin-top: 30px;
             }
@@ -120,7 +120,7 @@
                 resize: none;
             }
 
-            button {
+            .submit {
                 background-color: #95F867;
                 color: #2F2F2F;
                 border: none;
@@ -128,6 +128,32 @@
                 padding: 10px 20px;
                 cursor: pointer;
             }
+
+            .checkbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                label {
+                    padding-right: 10px;
+                }
+
+                input[type='checkbox'] {
+                    margin: auto 0;
+                }
+            }
+
+            .quill {
+                padding: 20px 0px;
+                .ql-snow {
+                    background-color: white;
+                }
+                .ql-editor {
+                    color: black;
+                    height: 200px;
+                }
+            }
+
         }
     }
 }

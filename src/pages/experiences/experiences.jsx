@@ -33,7 +33,7 @@ function Experiences() {
     }, []);
 
     const projectItem = projects.map((project, index) => (
-        <Box key={index} title={project.title} photoUrl={project.imageUrl} onClick={() => openModal(project)} />
+        <Box key={index} title={project.title} photoUrl={project.imageUrl} onClick={() => openModal(project)} imgClass='img-experience' />
     ));
 
     return (
@@ -43,16 +43,17 @@ function Experiences() {
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 {selectedProject && (
-                    <>
-                        <div className="content">
-                            <h2>{selectedProject?.title}</h2>
-                            <div>
-                                {/* eslint-disable-next-line */}
-                                <img src={selectedProject?.imageUrl} alt="Photo du projet" />
-                                <p>{selectedProject?.description}</p>
-                            </div>
+                    <div className="content">
+                        <h2>{selectedProject?.title}</h2>
+                        <div>
+                        {/* eslint-disable-next-line */}
+                            <img src={selectedProject?.imageUrl} alt="Photo du projet" />
+                            <div
+                                className="description"
+                                dangerouslySetInnerHTML={{ __html: selectedProject?.description }}
+                            />
                         </div>
-                    </>
+                    </div>
                 )}
             </Modal>
         </div>
