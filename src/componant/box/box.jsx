@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './box.scss';
 
-const Box = ({ title, photoUrl, description, onClick }) => {
+const Box = ({ title, photoUrl, description, onClick, imgClass }) => {
     return (
         <div className="box" onClick={onClick}>
             <h2>{title}</h2>
-            <img src={photoUrl} alt="" />
+            <img src={photoUrl} alt="" className={imgClass}/>
             <p>{description}</p>
         </div>
     );
