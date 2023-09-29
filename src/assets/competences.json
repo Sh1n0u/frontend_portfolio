@@ -2,41 +2,35 @@
     {
         "title": "Html 5",
         "photoUrl": "./images/logo_html.png",
-        "description": "L'utilisation du langage HTML est obligatoire pour la création d'application web",
-        "progression": 55
+        "description": "Je possède une solide maîtrise du langage HTML5, avec des compétences allant de la création de structures de base de pages web à l'utilisation d'attributs pour la personnalisation des éléments. J'ai également une bonne compréhension des formulaires, de la structure sémantique, des métadonnées, et de l'incorporation de CSS pour la mise en forme. Je suis conscient des enjeux d'accessibilité et de validation HTML. Bien que je maîtrise déjà plusieurs aspects, je continue à me tenir à jour avec les dernières évolutions du HTML5 pour rester compétent dans ce domaine en constante évolution.",
+        "progression": 65
     },
     {
         "title": "Css 3",
         "photoUrl": "./images/logo_css.png",
-        "description": "Quoi de mieux que le CSS/SCSS pour embélir votre code",
-        "progression": 50
+        "description": "Maîtrisant les fondamentaux et au-delà, mes compétences en CSS s'étendent de la création de mises en page responsive à l'utilisation avancée de sélecteurs. Je possède une expertise dans la manipulation du modèle de boîte, la gestion des transitions et animations, ainsi que la mise en œuvre créative de transformations. Mon savoir-faire englobe également la résolution de problèmes avec des sélecteurs avancés et la gestion des transitions et animations. Avec une connaissance approfondie des unités et des valeurs, je suis capable de concevoir des interfaces visuellement attrayantes et fonctionnelles. Mes compétences couvrent également la compatibilité des navigateurs, le débogage efficace, et j'ai une solide compréhension des pseudo-éléments et des pseudo-classes. Mon expérience démontre une aptitude à créer des designs élégants, fluides et intuitifs, tout en m'adaptant aux meilleures pratiques du secteur.",
+        "progression": 60
     },
     {
         "title": "JavaScript",
         "photoUrl": "./images/logo_js.png",
-        "description": "Optimiser et rendre dynamique votre application avec JavaScript",
-        "progression": 45
+        "description": "Je maîtrise les fondamentaux du langage JavaScript, y compris la syntaxe, les types de données, les variables, les opérations arithmétiques et logiques, les tableaux et les objets, les fonctions, la gestion des événements, les expressions régulières, les promesses, les requêtes HTTP avec l'API Fetch, les fonctions de rappel asynchrones, la gestion des erreurs, l'import/export de modules, la manipulation du DOM, et les outils de débogage du navigateur. Mon expertise en JavaScript me permet de créer des applications web interactives, dynamiques et performantes.",
+        "progression": 60
     },
     {
         "title": "React",
         "photoUrl": "./images/logo_react.png",
-        "description": "Idéal pour travailler avec des composants réutilisable",
-        "progression": 40
+        "description": "Passionné de développement web, j'ai développé une expertise approfondie dans React, couvrant les aspects essentiels tels que la création de composants, la gestion de l'état avec les hooks, et la mise en place de routes pour des applications dynamiques. Mon expérience s'étend à la gestion efficace des formulaires, les requêtes HTTP, et l'utilisation judicieuse des propriétés et de l'état pour construire des interfaces réactives. Mon portfolio démontre non seulement mes compétences techniques, mais aussi ma capacité à créer des expériences utilisateur fluides et performantes.",
+        "progression": 70
     },
     {
         "title": "NodeJs",
         "photoUrl": "./images/logo_nodeJs.png",
-        "description": "Produit par Google, c'est un environement d'exécution idéal pour travailler côté serveur en JavaScript",
-        "progression": 40
+        "description": "Bien que le back end ne soit pas ma tasse de thé préférée, je suis néanmoins armé de compétences Node.js pour collaborer harmonieusement avec les équipes full-stack. Ma philosophie ? Faire briller le côté visible et convivial du web. Let's make the frontend awesome together with ht backend!",
+        "progression": 60
     },
     {
-        "title": "PhP",
-        "photoUrl": "./images/logo_php.png",
-        "description": "C'est pas vraiment une compétence que je maitrise mais vue que j'arrive à l'écrire sans faire de faute, je me met 1%",
-        "progression": 1
-    },
-    {
-        "title": "PhP",
+        "title": "php",
         "photoUrl": "./images/logo_php.png",
         "description": "C'est pas vraiment une compétence que je maitrise mais vue que j'arrive à l'écrire sans faire de faute, je me met 1%",
         "progression": 1
