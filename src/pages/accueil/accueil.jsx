@@ -25,7 +25,7 @@ function Accueil() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:4000/api/nodemailer/sendEmail', {
+            const response = await axios.post('http://localhost:4000/api/nodemailer/sendMailer', {
                 email: email,
                 message: message,
             });
@@ -134,7 +134,7 @@ function Accueil() {
                 </div>
                 <div className="part right">
                     <p id="textTransition" className={hoveredProject ? 'hidden' : ''}>
-                        <span>
+                        <span className='img'>
                             <img src="./images/bannière_projet.png" alt="bannière des projets" />
                         </span>
                         Dans ces pages, vous trouverez un échantillon de mes réalisations les plus récentes. Chacun de
@@ -194,7 +194,9 @@ function Accueil() {
                             </div>
                         </form>
                     </div>
-                    <div className="part-right"></div>
+                    <div className="part-right">
+                        <img src="./images/message.jpg" alt="ecrire un message" />
+                    </div>
                 </div>
                 <div className="social-network">
                     <Link to="https://github.com/Sh1n0u" className="link">

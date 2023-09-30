@@ -106,7 +106,7 @@ function AdminPanel() {
         const formData = new FormData();
 
         console.log(selectedProject.description);
-        console.log(selectedProject)
+        console.log(selectedProject);
 
         formData.append('title', form.title.value);
         formData.append('description', selectedProject.description);
@@ -164,9 +164,13 @@ function AdminPanel() {
                             <li key={index}>
                                 {project.title}
                                 <div>
-                                    <button onClick={() => openEditModal(project)}>Modifier</button>
+                                    <button onClick={() => openEditModal(project)}>
+                                        <span className="text-edit">Modifier</span>
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                    </button>
                                     <button id="button-delete" onClick={() => handleDeleteProject(project._id)}>
-                                        Supprimer
+                                        <span className="text-delete">Supprimer</span>
+                                        <i className="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
                             </li>

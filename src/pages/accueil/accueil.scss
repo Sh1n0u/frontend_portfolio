@@ -11,7 +11,10 @@
         height: 325px;
         overflow: hidden;
         position: relative;
-        font-size: 25px;
+        // font-size: 25px;
+        font-size: 1em;
+        margin-bottom: 60px;
+
 
         img {
             object-fit: cover;
@@ -197,7 +200,7 @@
     }
 
     .presentation {
-        margin-top: 60px;
+        margin-bottom: 60px;
 
         h2 {
             margin: 0;
@@ -209,11 +212,10 @@
         }
 
         .about-container {
-            width: 87%;
+            width: 90%;
             height: 80%;
             background-color: #2f2f2f;
             margin: auto;
-            padding: 20px;
             border-radius: 10px;
             display: flex;
             justify-content: space-between;
@@ -221,9 +223,10 @@
 
             img {
                 width: 30%;
-                height: 100%;
+                height: auto;
                 border-radius: 10px;
                 margin-right: 20px;
+                object-fit: cover;
             }
 
             .text-container {
@@ -241,8 +244,8 @@
         display: flex;
         width: 100%;
         justify-content: center;
-        margin-top: 60px;
         gap: 60px;
+        margin-bottom: 60px;
 
         .part {
             background-color: #2f2f2f;
@@ -316,14 +319,17 @@
                 justify-content: center;
                 align-items: center;
 
-                img {
-                    width: 650px;
-                    height: 180px;
-                    object-fit: cover;
-                    border: 2px solid transparent;
-                    border-radius: 10px;
+                span {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        height: 180px;
+                        object-fit: cover;
+                        border-radius: 10px;
 
+                    }
                 }
+
             }
 
             #textTransition.hidden {
@@ -340,10 +346,7 @@
         display: flex;
         width: 100%;
         justify-content: center;
-
-        margin-top: 60px;
-        padding-bottom: 50px;
-        gap: 100px;
+        margin-bottom: 60px;
 
         .part {
             background-color: #2f2f2f;
@@ -356,7 +359,7 @@
         }
 
         .right {
-            width: 87%;
+            width: 90%;
             height: auto;
             text-decoration: none;
 
@@ -407,28 +410,47 @@
 
     .block-contact {
         width: 100%;
+        margin: auto;
         background-color: #3c3c3a;
         font-family: 'Ubuntu';
-        padding-top: 60px;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         .text {
-            margin: 0 auto 50px auto;
+            width: 90%;
             background-color: #2f2f2f;
-            padding: 20px;
+            padding: 20px 0px;
             border-radius: 10px;
             color: #C3C3C3;
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .central {
+            display: flex;
+            width: 100%;
+            gap: 60px;
+            justify-content: center;
+            margin-bottom: 60px;
+
+            .part-right {
+                width: 47%;
+                display: flex;
+
+                img {
+                    width: 100%;
+                    height: 290px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+
             .part-left {
-                margin: 30px auto 50px;
-                width: 350px;
+                width: calc(40% - 60px);
                 height: 250px;
                 background-color: #2f2f2f;
                 padding: 20px;
-                margin-top: 50px;
                 border-radius: 10px;
 
 
@@ -503,17 +525,19 @@
                     }
                 }
             }
+
+
         }
 
         .social-network {
-            margin: 50px auto;
-            width: 60%;
+            margin-bottom: 60px;
+            width: 90%;
             height: 30px;
             background-color: #2f2f2f;
             border-radius: 10px;
-            padding: 20px;
+            padding: 20px 0px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
 
             .link {
@@ -528,9 +552,10 @@
                 .QR-code {
                     width: 250px;
                     height: auto;
-                    position:relative;
+                    position: absolute;
 
-                    left: 75%;
+                    bottom: 1%;
+                    left: 50%;
                     bottom: 1%;
                     border-radius: 10px;
 
@@ -542,11 +567,86 @@
                 }
             }
         }
+
     }
 }
 
 
+@media all and (max-width: 575px) {
+    .page-accueil {
+        .banner-title {
+            display: none;
+        }
 
-::-webkit-scrollbar {
-    width: 0px;
+        .presentation {
+            margin-top: 60px;
+
+            .about-container {
+                flex-direction: column;
+
+                img {
+                    width: 100%;
+                }
+
+                .text-container {
+                    padding: 10px;
+                }
+            }
+        }
+
+        .block-experience {
+            flex-direction: column;
+
+            .part {
+                border-radius: 0;
+            }
+
+            .left, .right {
+                width: 100%;
+            }
+
+            .right {
+                padding: 0;
+
+                #textTransition {
+                    span {
+                        img {
+                            border-radius: 0;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        .block-competence {
+            width: 100%;
+            display: block;
+            background-color: #2f2f2f;
+        }
+
+        .block-contact {
+            .central {
+                .part-left {
+                    width: 80%;
+
+                }
+
+                .part-right {
+                    display: none;
+                }
+            }
+
+            .social-network {
+
+            .link {
+                p {
+                    display: none;
+                }
+            }
+            }
+        }
+    }
+
 }
