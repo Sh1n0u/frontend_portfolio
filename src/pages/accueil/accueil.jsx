@@ -10,8 +10,6 @@ function Accueil() {
     const [hoveredProject, setHoveredProject] = useState(null);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [showImage, setShowImage] = useState(false);
-
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -107,6 +105,12 @@ function Accueil() {
                         <p>Toujours à la recherche de nouvelles compétences, je m'améliore au fil du temps.</p>
                     </div>
                 </div>
+                <div className="scrolldown">
+                    <div className="chevrons">
+                        <div className="chevrondown"></div>
+                        <div className="chevrondown"></div>
+                    </div>
+                </div>
             </div>
 
             <div className="block-experience">
@@ -134,16 +138,18 @@ function Accueil() {
                 </div>
                 <div className="part right">
                     <p id="textTransition" className={hoveredProject ? 'hidden' : ''}>
-                        <span className='img'>
+                        <span className="img">
                             <img src="./images/bannière_projet.png" alt="bannière des projets" />
                         </span>
                         Dans ces pages, vous trouverez un échantillon de mes réalisations les plus récentes. Chacun de
                         ces projets a été conçu avec passion, développé avec précision et façonné pour répondre aux
                         besoins spécifiques de mes clients et des utilisateurs finaux.
                     </p>
-                    <p id="textTransition" className={hoveredProject ? '' : 'hidden'}>
-                        {hoveredProject}
-                    </p>
+                    <p
+                        id="textTransition"
+                        className={hoveredProject ? '' : 'hidden'}
+                        dangerouslySetInnerHTML={{ __html: hoveredProject }}
+                    ></p>
                 </div>
             </div>
 
@@ -199,30 +205,22 @@ function Accueil() {
                     </div>
                 </div>
                 <div className="social-network">
-                    <Link to="https://github.com/Sh1n0u" className="link">
+                    <Link to="https://github.com/Sh1n0u" className="link" target="_blank">
                         <img src="./images/logo_github.png" alt="logo Git" />
                         <p>lien Github</p>
                     </Link>
-                    <Link to="https://www.instagram.com/" className="link">
+                    <Link to="https://www.instagram.com/" className="link" target="_blank">
                         <img src="./images/logo_insta.png" alt="logo Git" />
                         <p>Instagram</p>
                     </Link>
-                    <Link to="https://fr.linkedin.com/" className="link">
+                    <Link to="https://fr.linkedin.com/" className="link" target="_blank">
                         <img src="./images/logo_linkedin.png" alt="logo Git" />
                         <p>Linkedin</p>
                     </Link>
-                    <div
-                        className="link"
-                        onMouseEnter={() => setShowImage(true)}
-                        onMouseLeave={() => setShowImage(false)}
-                    >
-                        {showImage ? (
-                            <img className='QR-code' src="./images/QR_telegram.jpg" alt="QR code de mon Telegram" />
-                        ) : (
-                            <img src="./images/logo_telegram.png" alt="logo Git" />
-                        )}
+                    <Link to="https://web.telegram.org/k/" className="link" target="_blank">
+                        <img src="./images/logo_telegram.png" alt="logo Telegram" />
                         <p>Telegram</p>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>
