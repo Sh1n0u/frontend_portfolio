@@ -3,6 +3,7 @@ import axios from 'axios';
 import './admin.scss';
 import Modal from '../../componant/modal/modal';
 import QuillEditor from '../../componant/quill-editor/quill-editor';
+import conf from '../../conf';
 
 function AdminPanel() {
     const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
@@ -49,7 +50,7 @@ function AdminPanel() {
         };
 
         try {
-            const response = await axios.post('http://localhost:4000/api/projects', formData, config);
+            const response = await axios.post(`${conf.server_url}/projects`, formData, config);
             console.log('Projet ajouté avec succès:', response.data);
             closeModal();
             setAddedProject(response.data.project);
@@ -62,7 +63,7 @@ function AdminPanel() {
     useEffect(() => {
         const getProjects = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/projects');
+                const response = await axios.get(`${conf.server_url}/projects`);
                 setProjects(response.data);
             } catch (error) {
                 console.error('Erreur lors de la récupération des projets:', error);
@@ -82,7 +83,7 @@ function AdminPanel() {
         };
 
         try {
-            const response = await axios.delete(`http://localhost:4000/api/projects/${projectId}`, config);
+            const response = await axios.delete(`${conf.server_url}/projects/${projectId}`, config);
             console.log('Projet supprimé avec succès:', response.data);
 
             // Mise à jour de la liste des projets après la suppression
@@ -121,7 +122,7 @@ function AdminPanel() {
 
         try {
             const response = await axios.put(
-                `http://localhost:4000/api/projects/${selectedProject._id}`,
+                `${conf.server_url}/projects/${selectedProject._id}`,
                 formData,
                 config
             );

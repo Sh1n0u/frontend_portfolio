@@ -3,6 +3,7 @@ import axios from 'axios';
 import Box from '../../componant/box/box';
 import Modal from '../../componant/modal/modal';
 import './experiences.scss';
+import conf from '../../conf';
 
 function Experiences() {
     const [projects, setProjects] = useState([]);
@@ -23,7 +24,7 @@ function Experiences() {
     useEffect(() => {
         document.title = 'Expériences';
         axios
-            .get('http://localhost:4000/api/projects')
+            .get(`${conf.server_url}/projects`)
             .then((response) => {
                 setProjects(response.data);
             })

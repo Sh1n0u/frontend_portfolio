@@ -4,6 +4,7 @@ import 'intersection-observer';
 import './accueil.scss';
 import axios from 'axios';
 import skillsData from '../../assets/competences.json';
+import conf from '../../conf';
 
 function Accueil() {
     const [projects, setProjects] = useState([]);
@@ -23,7 +24,7 @@ function Accueil() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:4000/api/nodemailer/sendMailer', {
+            const response = await axios.post(`${conf.server_url}/nodemailer/sendMailer`, {
                 email: email,
                 message: message,
             });
@@ -40,7 +41,7 @@ function Accueil() {
 
         const getSelectedProjects = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/projects/selected');
+                const response = await axios.get(`${conf.server_url}/projects/selected`);
                 setProjects(response.data);
             } catch (error) {
                 console.error('Erreur lors de la récupération des projets sélectionnés:', error);

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.scss';
 import axios from 'axios';
+import conf from '../../conf';
 
 function Login() {
     useEffect(() => {
         document.title = 'Login';
     }, []);
-    
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:4000/api/login', {
+            const response = await axios.post(`${conf.server_url}/login`, {
                 email: email,
                 password: password,
             });
