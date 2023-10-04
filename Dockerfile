@@ -1,6 +1,13 @@
 FROM node:18.18.0-alpine3.18
+
 WORKDIR /app
+
 COPY . .
+
 RUN npm install
-EXPOSE 1000
-CMD npm start
+RUN npm run build
+RUN npm install -g serve
+
+EXPOSE 80
+
+CMD serve -s build
